@@ -22,7 +22,7 @@ Self-hosted [Renovate](https://docs.renovatebot.com/) for `ardzero`'s open-sourc
 
 **`github>ardzero/sora-renovate:weekly`** (`weekly.json`): base plus the weekly batch.
 
-- New PRs only open before 06:00 UTC on Mondays.
+- New PRs only open on Mondays (UTC). The whole day counts, so a run GitHub starts hours late still opens them.
 - One PR for all non-major npm updates and one for GitHub Actions, both automerged once CI passes. Each major npm update gets its own PR; major GitHub Actions and workflow Node.js updates share one PR. Majors always wait for you.
 - Minor updates of `0.x` packages can break (semver), so they get their own PR (`pre-1.0 minor updates`) that waits for you.
 

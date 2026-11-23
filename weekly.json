@@ -1,10 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Weekly batch policy: one grouped non-major PR on Monday mornings, majors separate. Extend with \"github>ardzero/sora-renovate:weekly\".",
+  "description": "Weekly batch policy: one grouped non-major PR on Mondays, majors separate. Extend with \"github>ardzero/sora-renovate:weekly\".",
   "extends": ["github>ardzero/sora-renovate"],
-  "schedule": ["before 6am on monday"],
+  "schedule": ["on monday"],
   "lockFileMaintenance": {
-    "schedule": ["before 6am on monday"]
+    "schedule": ["on monday"]
   },
   "packageRules": [
     {
