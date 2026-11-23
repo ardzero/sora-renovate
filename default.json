@@ -25,6 +25,29 @@
       "description": "engines.node is the minimum Node.js users need, a deliberate support decision; don't raise it on every Node release",
       "matchDepTypes": ["engines"],
       "enabled": false
+    },
+    {
+      "description": "Node.js in workflows is tracked by the custom regex manager below (keeps the major-only format), not by the github-actions manager",
+      "matchManagers": ["github-actions"],
+      "matchDepNames": ["node"],
+      "enabled": false
+    },
+    {
+      "description": "Only move workflow Node.js between even (LTS) majors, keeping the major-only format",
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["node-version"],
+      "rangeStrategy": "replace",
+      "allowedVersions": "/^v?\\d*[02468](\\.|$)/"
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Track the major-only Node.js version in workflows (node-version: \"26\")",
+      "managerFilePatterns": ["/^\\.github/workflows/[^/]+\\.ya?ml$/"],
+      "matchStrings": ["node-version: \"(?<currentValue>\\d+)\""],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "node-version"
     }
   ]
 }
