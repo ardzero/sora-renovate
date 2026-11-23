@@ -2,13 +2,12 @@
 
 Self-hosted [Renovate](https://docs.renovatebot.com/) for `ardzero`'s open-source repos, running as the **Sora** GitHub App. One app, one key, one runner, one shared config. It's free because this repo is public, so GitHub Actions minutes are unlimited.
 
-| File                             | Purpose                                                                 |
-| :------------------------------- | :---------------------------------------------------------------------- |
-| `.github/workflows/renovate.yml` | Runs Renovate hourly across every repo the app is installed on          |
-| `config.js`                      | Global runner settings (autodiscover, signed commits, require a config) |
-| `default.json`                   | Base preset shared by every repo                                        |
-| `weekly.json`                    | Weekly batch policy (extends `default.json`)                            |
-| `renovate.json`                  | Keeps this repo's own action pins and Renovate version up to date       |
+| File                             | Purpose                                                           |
+| :------------------------------- | :---------------------------------------------------------------- |
+| `.github/workflows/renovate.yml` | Runs Renovate hourly across every repo the app is installed on    |
+| `default.json`                   | Base preset shared by every repo                                  |
+| `weekly.json`                    | Weekly batch policy (extends `default.json`)                      |
+| `renovate.json`                  | Keeps this repo's own action pins and Renovate version up to date |
 
 ## Presets
 
