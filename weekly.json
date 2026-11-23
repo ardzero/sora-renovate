@@ -16,6 +16,15 @@
       "automerge": true
     },
     {
+      "description": "0.x minor updates can break (semver): their own PR, reviewed by hand",
+      "matchManagers": ["bun", "npm"],
+      "matchUpdateTypes": ["minor"],
+      "matchCurrentVersion": "<1.0.0",
+      "groupName": "pre-1.0 minor updates",
+      "groupSlug": "pre-1-minor",
+      "automerge": false
+    },
+    {
       "description": "Major npm updates always need manual review",
       "matchManagers": ["bun", "npm"],
       "matchUpdateTypes": ["major"],
