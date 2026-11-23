@@ -54,11 +54,6 @@
       "matchDatasources": ["node-version"],
       "rangeStrategy": "replace",
       "allowedVersions": "/^v?\\d*[02468](\\.|$)/"
-    },
-    {
-      "description": "engines.node is the minimum Node.js users need, a deliberate support decision; don't raise it on every Node release",
-      "matchDepTypes": ["engines"],
-      "enabled": false
     }
   ],
   "customManagers": [
