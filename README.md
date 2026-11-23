@@ -1,6 +1,6 @@
 # sora-renovate
 
-Self-hosted [Renovate](https://docs.renovatebot.com/) for `ardzero`'s open-source repos, running as the **Sora** GitHub App. One app, one key, one runner, one shared config. It's free because this repo is public, so GitHub Actions minutes are unlimited.
+Self-hosted [Renovate](https://docs.renovatebot.com/) for `ardzero`'s open-source repos, running as the **Sora (renovate)** GitHub App (bot: `sora-renovate[bot]`). One app, one key, one runner, one shared config. It's free because this repo is public, so GitHub Actions minutes are unlimited.
 
 | File                             | Purpose                                                           |
 | :------------------------------- | :---------------------------------------------------------------- |
@@ -47,7 +47,7 @@ Self-hosted [Renovate](https://docs.renovatebot.com/) for `ardzero`'s open-sourc
    ```
 
 2. Make sure the repo has a CI workflow that runs on pull requests. Automerge waits for it, and without CI every PR waits for you.
-3. Add the repo to the Sora app's installation: GitHub → Settings → Applications → Installed GitHub Apps → **Sora** → Configure → Repository access.
+3. Add the repo to the Sora app's installation: GitHub → Settings → Applications → Installed GitHub Apps → **Sora (renovate)** → Configure → Repository access.
 4. The next hourly run picks it up. Actions → **Renovate** → **Run workflow** starts it right away.
 
 Repos the app can access but that have no Renovate config are skipped.
