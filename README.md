@@ -22,7 +22,7 @@ Self-hosted [Renovate](https://docs.renovatebot.com/) for `ardzero`'s open-sourc
 **`github>ardzero/sora-renovate:weekly`** (`weekly.json`): base plus the weekly batch.
 
 - New PRs only open before 06:00 UTC on Mondays.
-- One PR for all non-major npm updates and one for GitHub Actions, both automerged once CI passes. Majors get their own PR and wait for you.
+- One PR for all non-major npm updates and one for GitHub Actions, both automerged once CI passes. Each major npm update gets its own PR; major GitHub Actions and workflow Node.js updates share one PR. Majors always wait for you.
 - Workflow `node-version: "26"` only moves between even (LTS) majors, as a reviewed PR.
 - `engines.node` is never changed.
 
