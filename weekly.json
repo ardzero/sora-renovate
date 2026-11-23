@@ -1,0 +1,65 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Weekly batch policy: one grouped non-major PR on Monday mornings, majors separate. Extend with \"github>ardzero/sora-renovate:weekly\".",
+  "extends": ["github>ardzero/sora-renovate"],
+  "schedule": ["before 6am on monday"],
+  "lockFileMaintenance": {
+    "schedule": ["before 6am on monday"]
+  },
+  "packageRules": [
+    {
+      "description": "Batch all non-major npm updates into one weekly PR and automerge it once CI passes",
+      "matchManagers": ["bun", "npm"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "groupName": "non-major dependencies",
+      "groupSlug": "non-major",
+      "automerge": true
+    },
+    {
+      "description": "Major npm updates always need manual review",
+      "matchManagers": ["bun", "npm"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "addLabels": ["major"]
+    },
+    {
+      "description": "Batch GitHub Actions and workflow Node.js updates into one PR; majors get their own PR for review",
+      "matchManagers": ["github-actions", "custom.regex"],
+      "groupName": "GitHub Actions",
+      "groupSlug": "github-actions"
+    },
+    {
+      "matchManagers": ["github-actions", "custom.regex"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "description": "Node.js in workflows is tracked by the custom regex manager below (keeps the major-only format), not by the github-actions manager",
+      "matchManagers": ["github-actions"],
+      "matchDepNames": ["node"],
+      "enabled": false
+    },
+    {
+      "description": "Only move workflow Node.js between even (LTS) majors, keeping the major-only format",
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["node-version"],
+      "rangeStrategy": "replace",
+      "allowedVersions": "/^v?\\d*[02468](\\.|$)/"
+    },
+    {
+      "description": "engines.node is the minimum Node.js users need, a deliberate support decision; don't raise it on every Node release",
+      "matchDepTypes": ["engines"],
+      "enabled": false
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Track the major-only Node.js version in workflows (node-version: \"26\")",
+      "managerFilePatterns": ["/^\\.github/workflows/[^/]+\\.ya?ml$/"],
+      "matchStrings": ["node-version: \"(?<currentValue>\\d+)\""],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "node-version"
+    }
+  ]
+}
