@@ -17,6 +17,7 @@ Self-hosted [Renovate](https://docs.renovatebot.com/) for `ardzero`'s open-sourc
 - GitHub Actions are pinned to commit SHAs with a `# vX.Y.Z` comment.
 - Renovate merges automerge PRs itself, only after every check passes (no branch protection needed).
 - Weekly lockfile refresh, automerged.
+- `engines.node` is never changed: it's the minimum Node.js users need, a deliberate support decision.
 
 **`github>ardzero/sora-renovate:weekly`** (`weekly.json`): base plus the weekly batch.
 
@@ -24,7 +25,6 @@ Self-hosted [Renovate](https://docs.renovatebot.com/) for `ardzero`'s open-sourc
 - One PR for all non-major npm updates and one for GitHub Actions, both automerged once CI passes. Each major npm update gets its own PR; major GitHub Actions and workflow Node.js updates share one PR. Majors always wait for you.
 - Minor updates of `0.x` packages can break (semver), so they get their own PR (`pre-1.0 minor updates`) that waits for you.
 - Workflow `node-version: "26"` only moves between even (LTS) majors, as a reviewed PR.
-- `engines.node` is never changed.
 
 ## Repos
 

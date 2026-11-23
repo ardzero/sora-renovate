@@ -9,7 +9,7 @@ name: Renovate
 
 on:
   schedule:
-    - cron: "37 * * * *"
+    - cron: "17 * * * *"
   push:
     branches: [main]
     paths:
